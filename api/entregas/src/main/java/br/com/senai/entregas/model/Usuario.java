@@ -29,4 +29,11 @@ public class Usuario {
 
     @Column(name = "senha", nullable = false, columnDefinition = "TEXT")
     private String senha;
+
+//    Many e voltado para a classe atual
+//    EAGER - carrega o usuario e o tipo juntos (A sua acao e igual a de um JOIN)
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "tipo_usuario_id")
+    private TipoUsuario tipoUsuarioId;
 }
