@@ -24,7 +24,7 @@ public class Enderecos {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "cliente_id")
-    private TipoUsuario clieteId;
+    private TipoUsuario clienteId;
 
     @Column(name = "logradouro", nullable = false, unique = true, columnDefinition = "TEXT")
     private String logradouro;

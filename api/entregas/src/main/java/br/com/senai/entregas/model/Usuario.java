@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -36,4 +36,5 @@ public class Usuario {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "tipo_usuario_id")
     private TipoUsuario tipoUsuarioId;
+
 }

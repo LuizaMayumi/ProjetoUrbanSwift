@@ -16,7 +16,7 @@ import lombok.*;
 //Inforoma que a classe, e uma tabela
 @Entity
 // Permite a configuracao da tabela
-@Table(name = "tipo_usuario")
+@Table(name = "tipo_usuarios")
 
 public class TipoUsuario {
 
