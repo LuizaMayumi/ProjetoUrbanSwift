@@ -35,6 +35,6 @@ public class Usuario {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "tipo_usuario_id")
-    private TipoUsuario tipoUsuarioId;
+    private TipoUsuario tipoUsuario;
 
 }

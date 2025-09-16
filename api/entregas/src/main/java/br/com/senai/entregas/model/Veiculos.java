@@ -25,13 +25,13 @@ public class Veiculos {
     @JoinColumn(name = "usuario_id")
     private Usuario entregadorId;
 
-    @Column(name = "placa", nullable = false, unique = true)
+    @Column(name = "placa", nullable = false, unique = true, columnDefinition = "TEXT")
     private String placa;
 
-    @Column(name = "modelo", nullable = false)
+    @Column(name = "modelo", nullable = false, columnDefinition = "TEXT")
     private String modelo;
 
-    @Column(name = "tipo", nullable = false)
+    @Column(name = "tipo", nullable = false, columnDefinition = "TEXT")
     private String tipo;
 
 }

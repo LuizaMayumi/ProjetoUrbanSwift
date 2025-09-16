@@ -24,12 +24,12 @@ public class Enderecos {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "cliente_id")
-    private TipoUsuario clienteId;
+    private TipoUsuario usuario;
 
     @Column(name = "logradouro", nullable = false, unique = true, columnDefinition = "TEXT")
     private String logradouro;
 
-    @Column(name = "numero", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "numero", nullable = false, length = 20)
     private String numero;
 
     @Column(name = "cidade", nullable = false, columnDefinition = "TEXT")

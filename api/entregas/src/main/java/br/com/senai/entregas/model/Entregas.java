@@ -25,16 +25,16 @@ public class Entregas {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "cliente_id")
-    private Usuario clienteId;
+    private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "endereco_id")
-    private Enderecos enderecoId;
+    private Enderecos endereco;
 
-    @Column(name = "descricao_produto", nullable = false)
+    @Column(name = "descricao_produto", nullable = false, columnDefinition = "TEXT")
     private String descricaoProduto;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status", nullable = false, columnDefinition = "TEXT")
     private String status;
 
     @Column(name = "data_pedido", nullable = false)
