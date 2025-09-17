@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Getter
@@ -38,6 +39,6 @@ public class Entregas {
     private String status;
 
     @Column(name = "data_pedido", nullable = false)
-    private Date dataPedido;
+    private OffsetDateTime dataPedido;
 
 }
