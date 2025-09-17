@@ -24,7 +24,15 @@ public class TipoUsuarioService {
         return tipoUsuarioRepository.findById(id).orElse(null);
     }
 
+    public TipoUsuario createTipoUsuario(TipoUsuario tipoUsuario){
+        verificaDescricao(tipoUsuario.getDescricao());
+
+        return tipoUsuarioRepository.save(tipoUsuario);
+    }
+
     public TipoUsuario updateTipoUsuario(TipoUsuario tipoUsuario, Integer id){
+        verificaDescricao(tipoUsuario.getDescricao());
+
         TipoUsuario tipo = getByIdTipoUsuario(id);
 
         if(tipo == null){
@@ -47,5 +55,13 @@ public class TipoUsuarioService {
         return tipo;
     }
 
+    public String verificaDescricao(String descricao){
+        descricao = descricao.toUpperCase();
+
+        if(!descricao.equals("Cliente") || !descricao.equals("Entregador")){
+            return "Descricao deve ser cliente ou entregador";
+        }
+        return null;
+    }
 
 }

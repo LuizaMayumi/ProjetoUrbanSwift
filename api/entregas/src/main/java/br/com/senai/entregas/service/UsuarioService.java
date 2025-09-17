@@ -23,6 +23,10 @@ public class UsuarioService {
         return usuarioRepository.findById(id).orElse(null);
     }
 
+    public Usuario createUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
+    }
+
     public Usuario updateUsuario(Usuario usuario, Integer id){
         Usuario user = getUsuarioById(id);
 
@@ -38,14 +42,15 @@ public class UsuarioService {
         return usuarioRepository.save(user);
     }
 
-    public void deleteUsuario(Integer id){
+    public Usuario deleteUsuario(Integer id){
         Usuario user = getUsuarioById(id);
 
         if (user == null) {
-            return;
+            return null;
         }
 
         usuarioRepository.delete(user);
+        return user;
     }
 
 }

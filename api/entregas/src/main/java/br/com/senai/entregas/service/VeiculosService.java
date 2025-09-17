@@ -23,6 +23,10 @@ public class VeiculosService {
         return veiculosRepository.findById(id).orElse(null);
     }
 
+    public Veiculos postVeiculos(Veiculos veiculos){
+        return veiculosRepository.save(veiculos);
+    }
+
     public Veiculos updateVeiculosById(Integer id, Veiculos veiculos){
         Veiculos newVeiculos = findVeiculosById(id);
 
@@ -34,9 +38,10 @@ public class VeiculosService {
         return veiculosRepository.save(newVeiculos);
     }
 
-    public void deleteVeiculosById(Integer id){
+    public Veiculos deleteVeiculosById(Integer id){
         Veiculos veiculos = findVeiculosById(id);
 
         veiculosRepository.delete(veiculos);
+        return veiculos;
     }
 }

@@ -45,7 +45,7 @@ public class EntregasController {
         return ResponseEntity.ok().body(entrega);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Entregas> deleteEntrega(@PathVariable Integer id){
         Entregas entregas = entregasService.deleteEntregas(id);
         return ResponseEntity.ok().body(entregas);

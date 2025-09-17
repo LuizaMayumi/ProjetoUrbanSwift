@@ -45,7 +45,7 @@ public class EnderecosController {
         return ResponseEntity.ok().body(end);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Enderecos> deleteEndereco(@PathVariable Integer id){
         Enderecos enderecos = enderecosService.deletaEnderecos(id);
         return ResponseEntity.ok().body(enderecos);
