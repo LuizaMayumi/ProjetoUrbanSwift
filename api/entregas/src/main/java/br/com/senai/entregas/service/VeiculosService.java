@@ -36,7 +36,7 @@ public class VeiculosService {
 
     public void deleteVeiculosById(Integer id){
         Veiculos veiculos = findVeiculosById(id);
-        
+
         veiculosRepository.delete(veiculos);
     }
 }
