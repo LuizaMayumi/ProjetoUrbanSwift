@@ -60,7 +60,7 @@ public class TipoUsuarioService {
 
         if(!descricao.equals("Cliente") || !descricao.equals("Entregador")){
             return "Descricao deve ser cliente ou entregador";
-        }
+        }   
         return null;
     }
 

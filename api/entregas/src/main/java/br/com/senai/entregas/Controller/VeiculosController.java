@@ -52,10 +52,13 @@ public class VeiculosController {
     }
 
 
+    public String verificaTipo(String descricao){
+        descricao = descricao.toUpperCase();
 
-
-
-
-
+        if(!descricao.equals("Motocicleta") || !descricao.equals("Bicicleta")){
+            return "Descricao deve ser Motocicleta ou Bicicleta";
+        }
+        return null;
+    }
 
 }
