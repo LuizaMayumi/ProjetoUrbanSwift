@@ -1,7 +1,6 @@
 package br.com.senai.entregas.Controller;
 
 import br.com.senai.entregas.model.Entregas;
-import br.com.senai.entregas.model.Entregas;
 import br.com.senai.entregas.service.EntregasService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

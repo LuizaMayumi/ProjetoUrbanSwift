@@ -4,7 +4,7 @@ import br.com.senai.entregas.model.Veiculos;
 import br.com.senai.entregas.service.VeiculosService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-        import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 
 import java.util.List;
@@ -53,9 +53,9 @@ public class VeiculosController {
 
 
     public String verificaTipo(String descricao){
-        descricao = descricao.toUpperCase();
+        descricao = descricao.toLowerCase();
 
-        if(!descricao.equals("Motocicleta") || !descricao.equals("Bicicleta")){
+        if(!descricao.equals("motocicleta") || !descricao.equals("bicicleta")){
             return "Descricao deve ser Motocicleta ou Bicicleta";
         }
         return null;

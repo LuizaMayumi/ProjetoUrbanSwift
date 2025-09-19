@@ -23,10 +23,13 @@ public class EntregasService {
     }
 
     public Entregas createEntregas(Entregas entregas) {
+        verificaStatus(entregas.getStatus());
         return entregasRepository.save(entregas);
     }
 
     public Entregas updateEntregas(Entregas entregas, Integer id) {
+        verificaStatus(entregas.getStatus());
+
         Entregas ent = getEntregasById(id);
 
         if (ent == null) {
@@ -51,6 +54,15 @@ public class EntregasService {
          entregasRepository.delete(ent);
 
         return ent;
+    }
+
+    public String verificaStatus(String status){
+            status = status.toLowerCase();
+
+        if(!status.equals("pendente") || !status.equals("em rota") || !status.equals("entregue")){
+            return "Status deve ser Pendente, Em Rota ou Entregue";
+        }
+        return null;
     }
 
 }

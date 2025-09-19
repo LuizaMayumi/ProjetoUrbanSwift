@@ -56,9 +56,9 @@ public class TipoUsuarioService {
     }
 
     public String verificaDescricao(String descricao){
-        descricao = descricao.toUpperCase();
+        descricao = descricao.toLowerCase();
 
-        if(!descricao.equals("Cliente") || !descricao.equals("Entregador")){
+        if(!descricao.equals("cliente") || !descricao.equals("entregador")){
             return "Descricao deve ser cliente ou entregador";
         }   
         return null;
