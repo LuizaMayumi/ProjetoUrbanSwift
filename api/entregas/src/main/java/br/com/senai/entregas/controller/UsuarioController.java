@@ -1,4 +1,4 @@
-package br.com.senai.entregas.Controller;
+package br.com.senai.entregas.controller;
 
 import br.com.senai.entregas.model.Usuario;
 import br.com.senai.entregas.service.UsuarioService;

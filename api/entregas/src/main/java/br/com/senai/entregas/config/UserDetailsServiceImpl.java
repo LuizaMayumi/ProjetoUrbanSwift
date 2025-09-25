@@ -6,8 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 // E um service que depende da seguranca, por isso o @Service e o implements
 // Mesma injecao de dependecia, pois tambem trata de um Service.
 @Service

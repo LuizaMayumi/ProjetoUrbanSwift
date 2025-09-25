@@ -4,6 +4,7 @@ import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -56,15 +57,31 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                //Impede que outros sites realizem request na API (desativado)
                 .csrf(csrf -> csrf.disable())
-                //Gerenciamento de sessao
-                .sessionManagement(sessionManagement ->
-                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                // PRECISAMOS desligar o CORS para permitir que outros sites acessem nossa API
+                .cors(cors -> cors.disable())
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+                // AQUI MODIFICAMOS:
                 .authorizeHttpRequests(auth -> auth
+                        // 1. Define as rotas que são PÚBLICAS.
+                        // Qualquer requisição para "/api/auth/**" (nosso login) será permitida.
                         .requestMatchers("/api/auth/**").permitAll()
+                        // Também permite acesso à documentação do Swagger, se você a utilizar.
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                );
+
+                        // 2. Define que TODAS AS OUTRAS rotas devem ser autenticadas.
+                        // Esta é a nossa regra "negar por padrão": se não foi explicitamente liberado,
+                        // o acesso é bloqueado e exige um token válido.
+                        .anyRequest().authenticated()
+                )
+
+                // AQUI ESTÁ A ATIVAÇÃO DO VALIDADOR DE JWT:
+                // 3. "Contrata" a empresa de segurança do Spring para validar os tokens.
+                // Esta linha ativa um filtro que intercepta requisições, procura o token JWT
+                // no cabeçalho Authorization e usa nosso JwtDecoder para validá-lo.
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
 
         return http.build();
     }
