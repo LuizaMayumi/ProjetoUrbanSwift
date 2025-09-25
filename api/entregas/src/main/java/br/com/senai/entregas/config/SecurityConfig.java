@@ -69,7 +69,7 @@ public class SecurityConfig {
                         // Qualquer requisição para "/api/auth/**" (nosso login) será permitida.
                         .requestMatchers("/api/auth/**").permitAll()
                         // Também permite acesso à documentação do Swagger, se você a utilizar.
-                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/api-docs/**").permitAll()
 
                         // 2. Define que TODAS AS OUTRAS rotas devem ser autenticadas.
                         // Esta é a nossa regra "negar por padrão": se não foi explicitamente liberado,
